@@ -3,6 +3,7 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 
 const fetchMovieTitles = async (year, pageNum) => {
+    // fetch the most popular movies from [year] and fetch the page [pageNum]
     var res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=cb263f7b9500919d4895b47672d29010&sort_by=popularity.desc&primary_release_year=${year}&page=${pageNum}`);
     var json = await res.json();
     return json['results'].map(result => result['title']);
